@@ -1,0 +1,32 @@
+{
+  "name": "react-flashcard-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "build": "watchify public/src/app.js -o public/bundle.js -t [ babelify --presets [ react es2015] ]",
+    "server": "cd public && live-server --port=1234"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcoPires/react-flashcard-app.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "flashcard"
+  ], 
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MarcoPires/react-flashcard-app/issues"
+  },
+  "homepage": "https://github.com/MarcoPires/react-flashcard-app#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "live-server": "^1.1.0",
+    "watchify": "^3.7.0"
+  }
+}
