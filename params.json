@@ -1,0 +1,6 @@
+{
+  "name": "React-flashcard-app",
+  "tagline": "",
+  "body": "# React Flashcard App\r\n\r\nReact Flashcard App...\r\n\r\n\r\n## Version\r\n1.0.0 - 10/10/2016\r\n\r\n## Tech\r\n\r\nReact Flashcard App uses:\r\n* Html\r\n* CSS\r\n* React\r\n* Redux\r\n\r\n## Requirements\r\n\r\nReact Flashcard App needs:\r\n\r\n* ...\r\n\r\n## Installation\r\n\r\n```\r\n# Go to the projecto folder\r\n$ cd /react-flashcard-app\r\n$  npm install --save-dev babel-preset-react babel-preset-es2015 watchify babeli\r\nfy live-server\r\n```\r\n\r\n## Start development environment\r\n\r\n```\r\n$ npm run build\r\n$ npm run server\r\n```\r\n\r\n\r\n## References\r\n* [Tutsplus - Modern Web Apps With React and Redux](https://code.tutsplus.com/courses/modern-web-apps-with-react-and-redux/lessons/set-up-the-project)\r\n* [Original Github project - start-building-modern-web-apps-with-react-and-redux](https://github.com/tutsplus/start-building-modern-web-apps-with-react-and-redux)\r\n\r\n\r\n## Contacts\r\nFor more information feel free to contact me:\r\ne-mail : marcofspires@gmail.com\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
