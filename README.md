@@ -29,6 +29,12 @@ $  npm install --save-dev babel-preset-react babel-preset-es2015 watchify babeli
 fy live-server
 ```
 
+## Start development environment
+
+```
+$ npm run build
+$ npm run server
+```
 
 
 ## References
