@@ -46,3 +46,6 @@ $ npm run server
 For more information feel free to contact me:
 e-mail : marcofspires@gmail.com
 
+## License
+
+See the [LICENSE](LICENSE) file for license rights and limitations (MIT).
