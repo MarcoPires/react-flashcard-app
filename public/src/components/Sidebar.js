@@ -3,6 +3,39 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+
+/**
+ * Local modules
+ */
+import { addDeck, showAddDeck, hideAddDeck } from '../actions';
+
+/**
+ * Mapping state to properties
+ * @param  {Object} state 
+ * @return {Object}       
+ */
+const mapStateToProps = state =>{
+	return {
+		decks      : state.decks,
+		addingDeck : state.addingDeck
+	};
+};
+
+/**
+ * 
+ * Mapping properties to dispatchers
+ * 
+ * @param  {function} dispatch 
+ * @return {object}       
+ */
+const mapDispatchToProps = dispatch =>{
+	return {
+		addDeck : name => dispatch(addDeck(name)),
+		showAddDeck : () => dispatch(showAddDeck()),
+		hideAddDeck : () => dispatch(hideAddDeck())
+	};
+};
 
 /**
  * Sidebar component
@@ -47,4 +80,4 @@ const Sidebar = React.createClass({
 	}
 });
 
-export default Sidebar;
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
