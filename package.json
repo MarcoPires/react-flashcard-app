@@ -15,7 +15,7 @@
     "react",
     "redux",
     "flashcard"
-  ], 
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
@@ -28,5 +28,10 @@
     "babelify": "^7.3.0",
     "live-server": "^1.1.0",
     "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "redux": "^3.6.0"
   }
 }
