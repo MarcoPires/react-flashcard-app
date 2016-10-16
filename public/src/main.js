@@ -38,9 +38,4 @@ function run () {
 }
 
 run();
-
 store.subscribe(run);
-
-window.show = () => store.dispatch(showAddDeck());
-window.hide = () => store.dispatch(hideAddDeck());
-window.add  = () => store.dispatch(addDeck( new Date().toString() ));
