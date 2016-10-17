@@ -21,7 +21,7 @@ import VisibleCards from './components/VisibleCards';
 
 /**
  * Binding routerReducer with application reducers as a new property
- * @type {[type]}
+ * @type {Object}
  */
 reducers.routing = routerReducer;
 
@@ -47,7 +47,6 @@ const router = (
 			
 			<Route path='/deck/:deckId' component={ VisibleCards } ></Route>
 
-
 		</Route>
 	</Router>
 );
@@ -61,7 +60,7 @@ function run () {
 	ReactDOM.render((
 		<Provider store={ store }>
 
-			{router}
+			{ router }
 
 		</Provider>
 	), document.getElementById('root'));
