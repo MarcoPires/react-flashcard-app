@@ -13,11 +13,11 @@ import Sidebar from './Sidebar';
  * @param  {Object} props 
  * @return {String} HTML
  */
-const App = (props) => {
+const App = ({ children }) => {
 	return(
 		<div className='app'>
 			<Sidebar />
-			{props.children}
+			{children}
 		</div>
 	);
 };

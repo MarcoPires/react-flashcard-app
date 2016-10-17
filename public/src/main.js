@@ -17,6 +17,7 @@ import * as reducers from './reducers';
  * Local module components
  */
 import App from './components/App';
+import VisibleCards from './components/VisibleCards';
 
 /**
  * Binding routerReducer with application reducers as a new property
@@ -41,12 +42,16 @@ const history = syncHistoryWithStore(browserHistory, store);
  * @type {String} HTML
  */
 const router = (
-		<Router history={ history }>
-			<Route path='/' component={ App }>
+	<Router history={ history }>
+		<Route path='/' component={ App }>
+			
+			<Route path='/deck/:deckId' component={ VisibleCards } ></Route>
 
-			</Route>
-		</Router>
-	);
+
+		</Route>
+	</Router>
+);
+
 
 function run () {
 	let state = store.getState();
