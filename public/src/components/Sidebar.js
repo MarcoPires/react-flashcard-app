@@ -16,12 +16,10 @@ import { addDeck, showAddDeck, hideAddDeck } from '../actions';
  * @param  {Object} state 
  * @return {Object}       
  */
-const mapStateToProps = state =>{
-	return {
-		decks      : state.decks,
-		addingDeck : state.addingDeck
-	};
-};
+const mapStateToProps = ({ decks, addingDeck }) => ({
+  decks: decks,
+  addingDeck: addingDeck
+});
 
 /**
  * 
@@ -64,13 +62,13 @@ const Sidebar = React.createClass({
 
 				<ul>
 				{props.decks.map((deck, i) =>
-					<li key={i}>
-						<Link to={`/deck/${deck.id}`}> {deck.name} </Link>
-					</li>
+			        <li key={i}> 
+			          <Link to={`/deck/${deck.id}`}> {deck.name} </Link>
+			        </li>
 				)}
 				</ul>
 
-				{ props.addingDeck && <input ref='add'  onKeyPress={this.createDeck}/> }
+				{ props.addingDeck && <input ref='add' onKeyPress={this.createDeck}/> }
 			</div>
 		);
 	},

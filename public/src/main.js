@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as Redux from 'redux';
+import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
@@ -29,7 +29,7 @@ reducers.routing = routerReducer;
  * Application Store
  * @type {Object}
  */
-const store = Redux.createStore(Redux.combineReducers(reducers));
+const store = createStore(combineReducers(reducers));
 
 /**
  * Binding browserHistory with application store
@@ -42,13 +42,16 @@ const history = syncHistoryWithStore(browserHistory, store);
  * @type {String} HTML
  */
 const router = (
-	<Router history={ history }>
-		<Route path='/' component={ App }>
-			
-			<Route path='/deck/:deckId' component={ VisibleCards } ></Route>
+    <Router history={history}>
+      
+      <Route path='/' component={ App }>
+        
+        <Route path='/deck/:deckId' component={ VisibleCards }>
+        </Route>
 
-		</Route>
-	</Router>
+      </Route>
+
+    </Router>
 );
 
 
@@ -64,7 +67,7 @@ function run () {
 
 		</Provider>
 	), document.getElementById('root'));
-}
+};
 
 run();
 store.subscribe(run);
