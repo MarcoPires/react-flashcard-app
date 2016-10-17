@@ -5,6 +5,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import { Provider } from 'react-redux';
+import { Router, Route, browserHistory } from 'react-router';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
 /**
  * Local modules
@@ -15,7 +17,12 @@ import * as reducers from './reducers';
  * Local module components
  */
 import App from './components/App';
-import Sidebar from './components/Sidebar';
+
+/**
+ * Binding routerReducer with application reducers as a new property
+ * @type {[type]}
+ */
+reducers.routing = routerReducer;
 
 /**
  * Application Store
@@ -23,16 +30,34 @@ import Sidebar from './components/Sidebar';
  */
 const store = Redux.createStore(Redux.combineReducers(reducers));
 
+/**
+ * Binding browserHistory with application store
+ * @type {Object}
+ */
+const history = syncHistoryWithStore(browserHistory, store);
+
+/**
+ * Application Router
+ * @type {String} HTML
+ */
+const router = (
+		<Router history={ history }>
+			<Route path='/' component={ App }>
+
+			</Route>
+		</Router>
+	);
+
 function run () {
 	let state = store.getState();
 	
 	console.log("state: ", state);
 
 	ReactDOM.render((
-		<Provider store={ store }>	
-			<App>
-				<Sidebar></Sidebar>
-			</App>
+		<Provider store={ store }>
+
+			{router}
+
 		</Provider>
 	), document.getElementById('root'));
 }
