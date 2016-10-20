@@ -12,6 +12,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
  * Local modules
  */
 import * as reducers from './reducers';
+import * as localStore from './localStore';
 
 /**
  * Local module components
@@ -29,7 +30,7 @@ reducers.routing = routerReducer;
  * Application Store
  * @type {Object}
  */
-const store = createStore(combineReducers(reducers));
+const store = createStore(combineReducers(reducers), localStore.get());
 
 /**
  * Binding browserHistory with application store
@@ -58,6 +59,10 @@ const router = (
 function run () {
 	let state = store.getState();
 	
+	/**
+	 * This will save the data every time the "state" changes
+	 */
+	localStore.set(state, ['decks', 'cards']);
 	console.log("state: ", state);
 
 	ReactDOM.render((
