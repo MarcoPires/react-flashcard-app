@@ -10,10 +10,21 @@ import { Link } from 'react-router';
  */
 import { showAddDeck } from '../actions';
 
+/**
+ * Mapping properties to dispatchers
+ * 
+ * @param  {function} dispatch 
+ * @return {object}       
+ */
 const mapDispatchToProps = dispatch => ({
 	showAddDeck: () => dispatch(showAddDeck())
 })
 
+/**
+ * Toolbar component
+ * @type {Object}
+ * @return {String} HTML
+ */
 const Toolbar = ({deckId, showAddDeck}) => {
 	let deckTools = deckId ? (
 			<div>

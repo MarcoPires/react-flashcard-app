@@ -10,6 +10,12 @@ import { connect } from 'react-redux';
 import Sidebar from './Sidebar';
 import Toolbar from './Toolbar';
 
+/**
+ * Mapping state to properties
+ * 
+ * @param  {number} deckId 
+ * @return {object}       
+ */
 const mapStateToProps = (props, { params: { deckId } }) => ({
 	deckId: deckId
 });
