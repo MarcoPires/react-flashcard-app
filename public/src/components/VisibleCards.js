@@ -5,10 +5,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-const Cards = () => {
+const Cards = ({ children }) => {
 	return (
 		<div>
 			Deck will display here
+
+			{ children }
 		</div>
 	);
 };
