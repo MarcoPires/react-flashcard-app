@@ -10,7 +10,7 @@ const CardModal = React.createClass({
 	componentDidUpdate() {
 		ReactDOM.findDOMNode(this.refs.front).focus();
 	},
-
+	
 	render() {
 		let { card, onDelete } = this.props;
 
