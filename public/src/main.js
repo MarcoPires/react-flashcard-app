@@ -20,6 +20,7 @@ import * as localStore from './localStore';
 import App from './components/App';
 import VisibleCards from './components/VisibleCards';
 import NewCardModal from './components/NewCardModal';
+import EditCardModal from './components/EditCardModal';
 
 /**
  * Binding routerReducer with application reducers as a new property
@@ -50,8 +51,8 @@ const router = (
         
         <Route path='/deck/:deckId' component={ VisibleCards }>
 
-	        <Route path='/deck/:deckId/new' component={ NewCardModal }>
-	        </Route>
+	        <Route path='/deck/:deckId/new' component={ NewCardModal } />
+	        <Route path='/deck/:deckId/edit/:cardId' component={ EditCardModal } />
 
         </Route>
 

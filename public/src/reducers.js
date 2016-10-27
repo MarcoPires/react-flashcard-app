@@ -14,6 +14,21 @@ export const cards = (state, action) => {
 			});
 
 			return state.concat([newCard]);
+
+		case 'UPDATE_CARD':
+			let updateCard = action.data;
+
+			return state.map(card => {
+				if(card.id !== updateCard.id) return card;
+
+				return Object.assign({}, card, updateCard);
+			});
+			
+		case 'DELETE_CARD':
+			return state.filter(card => {
+				return card.id !== action.data;
+			});
+
 		default:
 			return state || [];
 	} 
