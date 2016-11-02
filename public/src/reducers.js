@@ -1,4 +1,9 @@
 /**
+ * npm modules
+ */
+import assign from 'object-assign';
+
+/**
  * Card Filter
  * @param  {Array} state  
  * @param  {Object} action
@@ -24,7 +29,7 @@ export const cards = (state, action) => {
 	
 	switch(action.type){
 		case 'ADD_CARD':
-			let newCard = Object.assign({}, action.data, {
+			let newCard = assign({}, action.data, {
 				score: 1,
 				id: +new Date()
 			});
@@ -37,7 +42,7 @@ export const cards = (state, action) => {
 			return state.map(card => {
 				if(card.id !== updateCard.id) return card;
 
-				return Object.assign({}, card, updateCard);
+				return assign({}, card, updateCard);
 			});
 			
 		case 'DELETE_CARD':

@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import assign from 'object-assign';
 import { Link, browserHistory } from 'react-router';
 
 const CardModal = React.createClass({
@@ -40,7 +41,7 @@ const CardModal = React.createClass({
 		let front = ReactDOM.findDOMNode(this.refs.front);
 		let back = ReactDOM.findDOMNode(this.refs.back);
 
-		this.props.onSave(Object.assign({}, this.props.card, {
+		this.props.onSave(assign({}, this.props.card, {
 			front: front.value,
 			back: back.value
 		}));
