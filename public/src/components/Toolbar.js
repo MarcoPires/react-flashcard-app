@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 /**
  * Local modules
  */
-import { showAddDeck } from '../actions';
+import { showAddDeck, filterCards } from '../actions';
 
 /**
  * Mapping properties to dispatchers
@@ -17,7 +17,8 @@ import { showAddDeck } from '../actions';
  * @return {object}       
  */
 const mapDispatchToProps = dispatch => ({
-	showAddDeck: () => dispatch(showAddDeck())
+	showAddDeck: () => dispatch(showAddDeck()),
+	onFilter: query => dispatch(filterCards(query))
 })
 
 /**
@@ -25,11 +26,18 @@ const mapDispatchToProps = dispatch => ({
  * @type {Object}
  * @return {String} HTML
  */
-const Toolbar = ({deckId, showAddDeck}) => {
+const Toolbar = ({deckId, showAddDeck, onFilter}) => {
 	let deckTools = deckId ? (
 			<div>
 				<Link className="btn" to={`/deck/${deckId}/new`}> ✚ New Card </Link>
 				<Link className="btn" to={`/deck/${deckId}/study`}> Study </Link>
+
+				<input
+					onChange={ evt => onFilter(evt.target.value) }
+					className="search"
+					type="search"
+					placeholder="Search Deck..."
+				/>
 			</div>
 		) : null;
 

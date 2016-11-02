@@ -2,6 +2,7 @@
  * npm modules
  */
 import React from 'react';
+import fuzzysearch from 'fuzzysearch';
 import { connect } from 'react-redux';
 
 /**
@@ -11,15 +12,27 @@ import Card from './Card';
 
 
 /**
+ * Return true when the filter text match the card
+ * @param  {string} filter 
+ * @param  {object} card   
+ * @return {boolean}        
+ */
+const matches = (filter, card) => {
+	return fuzzysearch(filter, card.front) || fuzzysearch(filter, card.back);
+};
+
+/**
  * Mapping state to properties
  * 
  * @param  {number} deckId 
  * @return {object}       
  */
-const mapStateToProps = ( { cards }, { params: { deckId } } ) => {
+const mapStateToProps = ( { cards, cardFilter }, { params: { deckId } } ) => {
 	return {
-		cards: cards.filter( (c) => { return c.deckId === deckId } )
-	}
+		cards: cards.filter( (card) => { 
+			return card.deckId === deckId && matches(cardFilter, card) 
+		})
+	};
 };
 
 

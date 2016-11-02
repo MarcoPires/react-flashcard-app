@@ -1,4 +1,20 @@
 /**
+ * Card Filter
+ * @param  {Array} state  
+ * @param  {Object} action
+ * @return {Array} state
+ */
+export const cardFilter = (state, action) => {
+
+	switch(action.type){
+		case 'FILTER_CARDS':
+			return action.data;
+		default:
+			return state || '';
+	}
+};
+
+/**
  * Cards Reducer
  * @param  {Array} state  
  * @param  {Object} action
