@@ -1,4 +1,11 @@
 /**
+ * Solve IE incompatibility with es6 promises and featch
+ */
+import Promise from 'es6-promise';
+import 'whatwg-fetch';
+window.Promise = window.Promise || Promise;
+
+/**
  * Actions:
  *  - ADD_DECK
  *  - SHOW_ADD_DECK
