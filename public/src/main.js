@@ -3,7 +3,8 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers } from 'redux'
+import thunkMiddleware from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
@@ -12,6 +13,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
  * Local modules
  */
 import * as reducers from './reducers';
+import { fetchData } from './actions';
 import * as localStore from './localStore';
 
 /**
@@ -33,7 +35,8 @@ reducers.routing = routerReducer;
  * Application Store
  * @type {Object}
  */
-const store = createStore(combineReducers(reducers), localStore.get());
+//const store = createStore(combineReducers(reducers), localStore.get());
+const store = createStore(combineReducers(reducers), localStore.get(), applyMiddleware(thunkMiddleware));
 
 /**
  * Binding browserHistory with application store
@@ -65,13 +68,7 @@ const router = (
 
 
 function run () {
-	let state = store.getState();
-	
-	/**
-	 * This will save the data every time the "state" changes
-	 */
-	localStore.set(state, ['decks', 'cards']);
-	console.log("state: ", state);
+	console.log("state: ", store.getState());
 
 	ReactDOM.render((
 		<Provider store={ store }>
@@ -82,5 +79,39 @@ function run () {
 	), document.getElementById('root'));
 };
 
-run();
-store.subscribe(run);
+let lastBody = '';
+function save() {
+	let state 	 = store.getState(),
+		body 	 = JSON.stringify({ decks: state.decks,cards: state.cards }),
+		evalBody = JSON.stringify(body);
+	
+	/**
+	 * This will save the data every time the "state" changes
+	 */
+	localStore.set(state, ['decks', 'cards']);
+	
+	/**
+	 * Only change remote storage when data changes
+	 */
+	if(evalBody === lastBody) return;
+
+	lastBody = evalBody;
+
+	fetch('/api/data', {
+		method: 'POST',
+		headers: {
+			Accept         : 'application/json',
+			'Content-Type' : 'application/json'
+		},
+		body: body
+	});
+};
+
+function init () {
+	run();
+	store.dispatch(fetchData());
+	store.subscribe(run);
+	store.subscribe(save);
+};
+
+init ();

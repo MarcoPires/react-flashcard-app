@@ -43,8 +43,15 @@ export const cardFilter = (state, action) => {
  * @return {Array} state
  */
 export const cards = (state, action) => {
-	
+
 	switch(action.type){
+		case 'RECEIEVE_DATA':
+			return action.data.cards || state;
+		case 'RECEIEVE_DATA_ERROR':
+			return action.data || state;
+		case 'START_FETCH_DATA':
+			return state || [];
+
 		case 'ADD_CARD':
 			let newCard = assign({}, action.data, {
 				score: 1,
@@ -81,6 +88,13 @@ export const cards = (state, action) => {
 export const decks = (state, action) => {
 
 	switch(action.type){
+		
+		case 'RECEIEVE_DATA':
+			return action.data.decks || state;
+		case 'RECEIEVE_DATA_ERROR':
+			return action.data || state;
+		case 'START_FETCH_DATA':
+			return state || [];
 		case 'ADD_DECK':
 			let newDeck = {
 				name: action.data,

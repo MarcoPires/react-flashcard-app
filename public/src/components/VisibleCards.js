@@ -27,7 +27,13 @@ const matches = (filter, card) => {
  * @param  {number} deckId 
  * @return {object}       
  */
-const mapStateToProps = ( { cards, cardFilter }, { params: { deckId } } ) => {
+const mapStateToProps = ( state, router ) => {
+	let stateOptions  = state  || {},
+		routerOptions = router || {},
+		cards         = stateOptions.cards,
+		cardFilter    = stateOptions.cardFilter,
+		deckId        = routerOptions.params.deckId;
+
 	return {
 		cards: cards.filter( (card) => { 
 			return card.deckId === deckId && matches(cardFilter, card) 

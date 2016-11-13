@@ -30,7 +30,6 @@ const App = ({ deckId, children }) => {
 		<div className='app'>
 			<Toolbar deckId={ deckId }/>
 			<Sidebar />
-			<h1> Deck  </h1>
 			{children}
 		</div>
 	);
