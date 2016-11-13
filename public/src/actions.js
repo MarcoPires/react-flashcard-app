@@ -1,9 +1,10 @@
 /**
- * Solve IE incompatibility with es6 promises and featch
+ * Solve IE incompatibility with es6 promises and fetch
  */
 import Promise from 'es6-promise';
 import 'whatwg-fetch';
 window.Promise = window.Promise || Promise;
+
 
 /**
  * Actions:
