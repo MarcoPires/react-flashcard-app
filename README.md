@@ -1,10 +1,11 @@
 # React Flashcard App
 
-React Flashcard App...
+React Flashcard App is an application based on the tutorial of [Tutsplus - Modern Web Apps With React and Redux](https://code.tutsplus.com/courses/modern-web-apps-with-react-and-redux/lessons/set-up-the-project).
+This version allows the hybrid use of "localstorage" and "API persistence", and still allows the use of internet explorer.
 
 
 ## Version
-1.0.0 - 10/10/2016
+1.0.1 - 13/11/2016
 
 ## Tech
 
@@ -18,22 +19,33 @@ React Flashcard App uses:
 
 React Flashcard App needs:
 
-* ...
+* react
+* react-dom
+* react-router
+* redux
+* react-redux
+* react-router-redux
+* redux-thunk
+* object-assign
+* es6-promise
+* whatwg-fetch
+* fuzzysearch
+* body-parser
 
 ## Installation
 
 ```
 # Go to the projecto folder
 $ cd /react-flashcard-app
-$  npm install --save-dev babel-preset-react babel-preset-es2015 watchify babeli
-fy live-server
+$ npm install
+$ npm server
 ```
 
 ## Start development environment
 
 ```
 $ npm run build
-$ npm run server
+$ npm run simple-server
 ```
 
 
